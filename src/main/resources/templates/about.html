@@ -1,0 +1,9 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('About')}"></head><body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+<section class="page-hero"><span class="eyebrow">Why Food Rescue exists</span><h1>Making food donation easier to coordinate.</h1><p>We give donors and recipients one practical place to list, discover, request, and track surplus food.</p></section>
+<main class="wrap"><section class="hero" style="padding-top:30px"><div class="grid">
+<div class="card"><span class="eyebrow">01</span><h3>The problem</h3><p>Restaurants, hostels, hotels, events, cafeterias, and households can have perfectly edible surplus without a reliable way to find a recipient in time.</p></div>
+<div class="card"><span class="eyebrow">02</span><h3>Our solution</h3><p>A centralized, time-aware platform for listing surplus, discovering nearby donations, coordinating requests, and tracking every handoff.</p></div>
+<div class="card"><span class="eyebrow">03</span><h3>Our mission</h3><p>Reduce avoidable food waste and make local donation coordination feel simple, dignified, and accountable.</p></div></div><div class="hero-img" style="border-radius:20px"></div></section>
+<section class="cta"><div><h2>Turn today's surplus into support.</h2><p>Join the local network making food rescue practical.</p></div><a th:href="@{/register}" class="btn">Get started</a></section></main>
+<footer th:replace="~{fragments/layout :: footer}"></footer></body></html>

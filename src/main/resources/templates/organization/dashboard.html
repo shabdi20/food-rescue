@@ -1,0 +1,9 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('NGO Dashboard')}"></head><body><div class="shell">
+<aside th:replace="~{fragments/layout :: sidebar('org')}"></aside><main class="main"><div class="top"><div><button class="btn menu-btn">&#9776;</button><h1>Welcome, <span th:text="${user.name}"></span></h1></div>
+<form method="get" th:action="@{/organization/dashboard}"><input name="q" th:value="${q}" placeholder="Search available food"></form></div><div th:replace="~{fragments/layout :: alerts}"></div>
+<div class="card"><h3>Available food</h3><div class="tablewrap"><table><tr><th>Food</th><th>Qty</th><th>Location</th><th>Deadline</th><th></th></tr>
+<tr th:each="d:${food}"><td th:text="${d.foodName}"></td><td th:text="${d.quantity+' '+d.unit}"></td><td th:text="${d.pickupLocation}"></td><td th:text="${#temporals.format(d.bestBefore,'dd MMM, hh:mm a')}"></td>
+<td><a class="btn" th:href="@{/organization/food/{id}(id=${d.id})}">View</a> <form style="display:inline" th:action="@{/organization/food/{id}/claim(id=${d.id})}" method="post"><button class="btn btn-green" data-confirm="Claim this food?">Claim</button></form></td></tr></table></div><p th:if="${food.empty}">Nothing available right now.</p></div><br>
+<div class="card"><h3>My pickups</h3><div class="tablewrap"><table><tr><th>Food</th><th>Donor</th><th>Pickup</th><th>Status</th><th></th></tr>
+<tr th:each="p:${pickups}"><td th:text="${p.donation.foodName}"></td><td th:text="${p.donation.donor.orgName}"></td><td th:text="${#temporals.format(p.pickupDate,'dd MMM, hh:mm a')}"></td><td><span th:replace="~{fragments/layout :: badge(${p.status.name()})}"></span></td>
+<td><form th:if="${p.status.name()!='COMPLETED'}" th:action="@{/organization/pickups/{id}/advance(id=${p.id})}" method="post"><button class="btn">Advance status</button></form></td></tr></table></div></div></main></div></body></html>

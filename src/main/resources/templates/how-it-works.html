@@ -1,0 +1,9 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('How It Works')}"></head><body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+<section class="page-hero"><span class="eyebrow">A simple, trusted process</span><h1>Good food should find people, not landfills.</h1><p>Food Rescue creates a clear path from available surplus to confirmed community collection.</p></section>
+<main class="wrap" style="padding-top:30px"><div class="grid g3">
+<div class="card steps"><h3>For food donors</h3><p><small>STEP 1</small>Create a verified profile</p><p><small>STEP 2</small>Add surplus food details</p><p><small>STEP 3</small>Set location and deadline</p><p><small>STEP 4</small>Review a recipient request</p><p><small>STEP 5</small>Confirm the collection</p><p><small>STEP 6</small>Mark the handoff complete</p></div>
+<div class="card steps" style="text-align:center"><h3>The journey</h3><p><b>1</b> Donor</p><p><b>2</b> Food listing</p><p><b>3</b> NGO / Recipient</p><p><b>4</b> Request</p><p><b>5</b> Confirmation</p><p><b>6</b> Pickup</p><p><b>7</b> Completed</p></div>
+<div class="card steps"><h3>For recipients</h3><p><small>STEP 1</small>Register your organization</p><p><small>STEP 2</small>Browse available food</p><p><small>STEP 3</small>Choose a suitable donation</p><p><small>STEP 4</small>Submit a pickup request</p><p><small>STEP 5</small>Receive donor confirmation</p><p><small>STEP 6</small>Collect and complete</p></div></div>
+<section class="cta"><div><h2>Ready to take the first step?</h2><p>Join the local network making food rescue practical.</p></div><a th:href="@{/register}" class="btn">Get started</a></section></main>
+<footer th:replace="~{fragments/layout :: footer}"></footer></body></html>

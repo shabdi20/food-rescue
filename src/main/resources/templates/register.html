@@ -1,0 +1,9 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('Register')}"></head><body>
+<div class="auth wide"><div class="card"><div style="text-align:center"><span class="eyebrow">Welcome to Food Rescue</span><h2 style="font-weight:400">Create your account</h2></div>
+<form th:action="@{/register}" th:object="${form}" method="post"><label>I am a</label><select th:field="*{role}"><option value="DONOR">Food donor</option><option value="ORGANIZATION">NGO / Recipient</option></select>
+<div class="form2"><div><label>Full name</label><input th:field="*{name}"><span class="err" th:errors="*{name}"></span></div><div><label>Phone number</label><input th:field="*{phone}" placeholder="+91 98765 43210"><span class="err" th:errors="*{phone}"></span></div>
+<div><label>Organization name</label><input th:field="*{orgName}"></div><div><label>Location</label><input th:field="*{location}" placeholder="City, area"><span class="err" th:errors="*{location}"></span></div>
+<div><label>Email address</label><input th:field="*{email}" type="email"><span class="err" th:errors="*{email}"></span></div><div><label>Password</label><input th:field="*{password}" type="password" placeholder="At least 8 characters"><span class="err" th:errors="*{password}"></span></div>
+<div><label>Confirm password</label><input th:field="*{confirmPassword}" type="password"><span class="err" th:errors="*{confirmPassword}"></span></div></div>
+<label style="font-weight:400"><input type="checkbox" th:field="*{terms}" style="width:auto"> I agree to the Terms and Privacy Policy.</label><span class="err" th:errors="*{terms}"></span><br><br>
+<button class="btn btn-green" style="width:100%">Create account</button></form><p style="text-align:center;font-size:14px">Already have an account? <a th:href="@{/login}" style="color:var(--green);font-weight:700">Login</a></p></div></div></body></html>

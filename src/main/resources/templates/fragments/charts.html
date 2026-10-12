@@ -1,0 +1,6 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><body>
+<svg th:fragment="line" viewBox="0 0 300 110" width="100%" role="img" aria-label="Donations per month"><polygon th:attr="points=${areaPts}" fill="#e3f1e3"></polygon><polyline th:attr="points=${linePts}" fill="none" stroke="#2e7d32" stroke-width="3"></polyline>
+<text th:each="l,i:${monthLabels}" th:attr="x=${10+i.index*56}" y="106" font-size="8" text-anchor="middle" fill="#6b7c85" th:text="${l}"></text></svg>
+<div th:fragment="donut" style="text-align:center"><div class="donut" th:style="'background:'+${donutStyle}"><span th:text="${total}"></span></div>
+<small style="color:var(--muted)">Completed <span th:text="${completed}"></span> · Available <span th:text="${pending}"></span> · Other <span th:text="${total-completed-pending}"></span></small></div>
+</body></html>

@@ -1,0 +1,9 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('Donation')}"></head><body><div class="shell">
+<aside th:replace="~{fragments/layout :: sidebar('mine')}"></aside><main class="main"><div class="top"><div><button class="btn menu-btn">&#9776;</button><h1 th:text="${d.foodName}"></h1></div><span th:replace="~{fragments/layout :: badge(${d.status.name()})}"></span></div>
+<div class="card"><img class="photo" th:if="${d.imagePath}" th:src="@{/uploads/{f}(f=${d.imagePath})}" alt="Food photo">
+<p><b>Quantity:</b> <span th:text="${d.quantity+' '+d.unit}"></span> · <b>Category:</b> <span th:text="${d.category}"></span></p><p th:text="${d.description}"></p>
+<p><b>Pickup:</b> <span th:text="${d.pickupLocation}"></span>, <span th:text="${d.fullAddress}"></span></p><p><b>Deadline:</b> <span th:text="${#temporals.format(d.bestBefore,'dd MMM yyyy, hh:mm a')}"></span></p>
+<p><b>Contact:</b> <span th:text="${d.contactPerson}"></span> <span th:text="${d.contactNumber}"></span></p>
+<form th:if="${d.status.name()=='DRAFT'}" th:action="@{/donor/donations/{id}/publish(id=${d.id})}" method="post"><button class="btn btn-green">Publish now</button></form></div><br>
+<div class="card"><h3>Requests for this donation</h3><p th:if="${requests.empty}">No requests yet.</p><div th:each="r:${requests}" class="req"><span><b th:text="${r.organization.organizationName}"></b> · <span th:text="${#temporals.format(r.pickupDate,'dd MMM, hh:mm a')}"></span></span><span th:replace="~{fragments/layout :: badge(${r.status.name()})}"></span></div></div>
+<br><a th:href="@{/donor/donations}" class="btn">&larr; Back</a></main></div></body></html>

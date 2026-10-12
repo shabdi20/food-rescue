@@ -1,0 +1,6 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('Login')}"></head><body>
+<div class="auth"><div class="card"><div style="text-align:center"><span class="eyebrow">Welcome to Food Rescue</span><h2 style="font-weight:400">Sign in to your account</h2></div>
+<div class="alert ok" th:if="${success}" th:text="${success}"></div><div class="alert bad" th:if="${param.error}">Invalid email or password.</div><div class="alert bad" th:if="${param.denied}">You do not have access to that page.</div>
+<form th:action="@{/login}" method="post"><label>Email address</label><input name="email" type="email" placeholder="you@example.org" required>
+<label>Password</label><input name="password" type="password" placeholder="Enter your password" required><br><br><button class="btn btn-green" style="width:100%">Login</button></form>
+<p style="text-align:center;font-size:14px">Don't have an account? <a th:href="@{/register}" style="color:var(--green);font-weight:700">Register</a></p></div></div></body></html>

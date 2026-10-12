@@ -1,0 +1,17 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head(title)"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title th:text="${title}+' · Food Rescue'">Food Rescue</title><link rel="stylesheet" th:href="@{/css/style.css}"><script th:src="@{/js/script.js}" defer></script></head>
+<body>
+<header th:fragment="navbar" class="wrap nav"><a th:href="@{/}" class="logo"><i>&#10048;</i>FOOD RESCUE</a>
+ <nav class="links"><a th:href="@{/}">Home</a><a th:href="@{/how-it-works}">How It Works</a><a th:href="@{/about}">About</a><a th:href="@{/impact}">Impact</a><a th:href="@{/login}">Login</a><a th:href="@{/register}" class="btn btn-green">Donate Food</a></nav></header>
+<footer th:fragment="footer"><div class="wrap grid"><div><b>FOOD RESCUE</b><p>Turning good food into shared opportunity, one local connection at a time.</p></div>
+ <div><b>Platform</b><p><a th:href="@{/about}">About us</a></p><p><a th:href="@{/how-it-works}">How it works</a></p><p><a th:href="@{/impact}">Our impact</a></p></div><div><b>Support</b><p>Contact</p><p>Privacy</p></div><div><b>Stay connected</b><p>&copy; 2026 Food Rescue</p></div></div></footer>
+<aside th:fragment="sidebar(active)" class="side"><a th:href="@{/}" class="logo"><i>&#10048;</i>FOOD RESCUE</a>
+ <div class="tag" sec:authorize="hasRole('DONOR')">FOOD DONOR WORKSPACE</div><div class="tag" sec:authorize="hasRole('ORGANIZATION')">NGO WORKSPACE</div><div class="tag" sec:authorize="hasRole('ADMIN')">ADMINISTRATOR WORKSPACE</div>
+ <th:block sec:authorize="hasRole('DONOR')"><a th:href="@{/donor/dashboard}" th:classappend="${active=='dash'}?'on'">Dashboard</a><a th:href="@{/donor/donations/new}" th:classappend="${active=='add'}?'on'">Add Food</a><a th:href="@{/donor/donations}" th:classappend="${active=='mine'}?'on'">My Donations</a><a th:href="@{/donor/requests}" th:classappend="${active=='req'}?'on'">Requests</a><a th:href="@{/profile}" th:classappend="${active=='profile'}?'on'">Profile</a></th:block>
+ <th:block sec:authorize="hasRole('ORGANIZATION')"><a th:href="@{/organization/dashboard}" th:classappend="${active=='org'}?'on'">Available Food &amp; Pickups</a><a th:href="@{/profile}" th:classappend="${active=='profile'}?'on'">Profile</a></th:block>
+ <th:block sec:authorize="hasRole('ADMIN')"><a th:href="@{/admin/dashboard}" th:classappend="${active=='dash'}?'on'">Dashboard</a><a th:href="@{/admin/users}" th:classappend="${active=='users'}?'on'">Users</a><a th:href="@{/admin/donations}" th:classappend="${active=='don'}?'on'">Donations</a><a th:href="@{/admin/requests}" th:classappend="${active=='req'}?'on'">Requests</a><a th:href="@{/admin/reports}" th:classappend="${active=='rep'}?'on'">Reports</a><a th:href="@{/profile}" th:classappend="${active=='profile'}?'on'">Settings</a></th:block>
+ <form th:action="@{/logout}" method="post" style="margin-top:auto"><button class="btn" style="width:100%;color:#a33">Logout</button></form></aside>
+<div th:fragment="alerts"><div class="alert ok" th:if="${success}" th:text="${success}"></div><div class="alert bad" th:if="${error}" th:text="${error}"></div></div>
+<span th:fragment="badge(s)" class="badge" th:classappend="${s}" th:text="${#strings.capitalize(#strings.toLowerCase(#strings.replace(s,'_',' ')))}"></span>
+</body></html>

@@ -1,0 +1,4 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('Error')}"></head><body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+<main class="wrap" style="text-align:center;padding:90px 20px"><span class="eyebrow">Error <span th:text="${status}"></span></span><h1 style="font-weight:400">Something went wrong</h1>
+<p style="color:var(--muted)" th:text="${#strings.isEmpty(message)}?'We could not complete that request. Please try again.':${message}"></p><a th:href="@{/}" class="btn btn-green">Back to home</a></main></body></html>

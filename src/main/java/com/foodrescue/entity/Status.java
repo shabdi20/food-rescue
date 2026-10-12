@@ -1,0 +1,3 @@
+package com.foodrescue.entity;
+/** AVAILABLE -> CLAIMED -> PICKUP_SCHEDULED -> COMPLETED */
+public enum Status { DRAFT, AVAILABLE, CLAIMED, PICKUP_SCHEDULED, COMPLETED }

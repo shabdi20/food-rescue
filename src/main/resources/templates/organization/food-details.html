@@ -1,0 +1,6 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('Food details')}"></head><body><div class="shell">
+<aside th:replace="~{fragments/layout :: sidebar('org')}"></aside><main class="main"><div class="top"><div><button class="btn menu-btn">&#9776;</button><h1 th:text="${d.foodName}"></h1></div><span th:replace="~{fragments/layout :: badge(${d.status.name()})}"></span></div>
+<div class="card"><img class="photo" th:if="${d.imagePath}" th:src="@{/uploads/{f}(f=${d.imagePath})}" alt="Food photo">
+<p><b>Donor:</b> <span th:text="${d.donor.orgName}"></span></p><p><b>Quantity:</b> <span th:text="${d.quantity+' '+d.unit}"></span> · <b>Category:</b> <span th:text="${d.category}"></span></p><p th:text="${d.description}"></p>
+<p><b>Pickup:</b> <span th:text="${d.pickupLocation}"></span>, <span th:text="${d.fullAddress}"></span></p><p><b>Collect before:</b> <span th:text="${#temporals.format(d.bestBefore,'dd MMM yyyy, hh:mm a')}"></span></p>
+<form th:if="${d.status.name()=='AVAILABLE'}" th:action="@{/organization/food/{id}/claim(id=${d.id})}" method="post"><button class="btn btn-green" data-confirm="Claim this food?">Claim this food</button></form></div><br><a th:href="@{/organization/dashboard}" class="btn">&larr; Back</a></main></div></body></html>

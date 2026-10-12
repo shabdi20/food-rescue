@@ -1,0 +1,11 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('Home')}"></head><body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+<main class="wrap"><section class="hero"><div><span class="eyebrow">Local food. Lasting impact.</span><h1>Turn surplus food into something <em>meaningful.</em></h1>
+<p>Connect surplus edible food with trusted NGOs and communities that need it, before it goes to waste.</p>
+<a th:href="@{/register}" class="btn btn-green">+ Donate Food</a> <a th:href="@{/login}" class="btn">Find Food</a></div><div class="hero-img"></div></section>
+<section class="grid g3"><div class="card"><b>Reduce Waste</b><br><span>Give surplus food a second purpose.</span></div><div class="card"><b>Connect Communities</b><br><span>Bring local donors and recipients together.</span></div><div class="card"><b>Create Impact</b><br><span>Track every collection and meal rescued.</span></div></section>
+<section id="how" style="text-align:center;padding:60px 0"><span class="eyebrow">Simple by design</span><h2 style="font-weight:400;font-size:36px">From surplus to support in four steps</h2>
+<div class="grid g4"><div><b>01 Donate</b><p>List safe, surplus food in minutes.</p></div><div><b>02 Match</b><p>Nearby recipients find the right donation.</p></div><div><b>03 Collect</b><p>Coordinate a reliable pickup window.</p></div><div><b>04 Make an impact</b><p>Complete the handoff and track results.</p></div></div></section>
+<section id="impact" class="grid g4"><div class="card dark stat"><span>Food rescued</span><b>12.4k kg</b></div><div class="card stat"><span>Donations completed</span><b>2,840</b></div><div class="card stat"><span>Active donors</span><b>386</b></div><div class="card stat"><span>Partner NGOs</span><b>92</b></div></section>
+<section class="cta"><div><span class="eyebrow" style="color:#bfe3c0">Ready to share?</span><h2>Have surplus food?</h2><p>A listing takes less than three minutes.</p></div><a th:href="@{/register}" class="btn btn-orange">+ Donate Food</a></section></main>
+<footer th:replace="~{fragments/layout :: footer}"></footer></body></html>

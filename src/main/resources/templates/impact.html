@@ -1,0 +1,9 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('Impact')}"></head><body>
+<header th:replace="~{fragments/layout :: navbar}"></header>
+<section class="page-hero"><span class="eyebrow">Transparent, measurable progress</span><h1>See every donation become local impact.</h1><p>Purpose-built reporting helps communities understand what was rescued, collected, and completed.</p></section>
+<main class="wrap" style="padding-top:30px"><div class="grid g4"><div class="card stat"><b>12.4k kg</b><span>Food rescued</span></div><div class="card stat"><b>2,840</b><span>Donations completed</span></div><div class="card stat"><b>386</b><span>Active donors</span></div><div class="card stat"><b>92</b><span>Partner NGOs</span></div></div><br>
+<div class="card"><span class="eyebrow">Monthly activity</span><h3 style="font-weight:400">Donation completion trend</h3>
+<svg viewBox="0 0 300 110" width="100%"><polygon points="10,90 66,70 122,66 178,52 234,34 290,26 290,90" fill="#e3f1e3"></polygon><polyline points="10,90 66,70 122,66 178,52 234,34 290,26" fill="none" stroke="#2e7d32" stroke-width="3"></polyline></svg>
+<small style="color:var(--muted)">Placeholder data shown for interface demonstration.</small></div>
+<section class="cta"><div><h2>Turn today's surplus into support.</h2></div><a th:href="@{/register}" class="btn">Get started</a></section></main>
+<footer th:replace="~{fragments/layout :: footer}"></footer></body></html>

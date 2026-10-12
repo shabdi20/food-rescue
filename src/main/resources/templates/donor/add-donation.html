@@ -1,0 +1,14 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('Add Food')}"></head><body><div class="shell">
+<aside th:replace="~{fragments/layout :: sidebar('add')}"></aside><main class="main"><div class="top"><div><button class="btn menu-btn">&#9776;</button><h1>Add Food Donation</h1><span style="color:var(--muted)">Share clear, accurate details so recipients can plan a safe collection.</span></div></div>
+<form class="card" th:action="@{/donor/donations}" th:object="${form}" method="post" enctype="multipart/form-data"><div class="form2">
+<div><label>Food name</label><input th:field="*{foodName}" placeholder="e.g. Fresh vegetable meals"><span class="err" th:errors="*{foodName}"></span></div>
+<div><label>Food category</label><select th:field="*{category}"><option>Prepared meals</option><option>Bakery</option><option>Fruits &amp; vegetables</option><option>Packaged food</option></select></div>
+<div><label>Quantity</label><input type="number" th:field="*{quantity}"><span class="err" th:errors="*{quantity}"></span></div>
+<div><label>Unit</label><select th:field="*{unit}"><option>Boxes</option><option>Trays</option><option>kg</option></select></div></div>
+<label>Food description</label><textarea rows="3" th:field="*{description}" placeholder="Ingredients, preparation time, allergens, and packaging..."></textarea>
+<div class="form2"><div><label>Pickup deadline</label><input type="datetime-local" th:field="*{bestBefore}"><span class="err" th:errors="*{bestBefore}"></span></div>
+<div><label>Pickup location</label><input th:field="*{pickupLocation}" placeholder="Area or landmark"><span class="err" th:errors="*{pickupLocation}"></span></div>
+<div><label>Full address</label><input th:field="*{fullAddress}" placeholder="Street address"></div><div><label>Contact person</label><input th:field="*{contactPerson}" placeholder="Contact name"></div>
+<div><label>Contact number</label><input th:field="*{contactNumber}" placeholder="+91 98765 43210"></div><div><label>Food image (PNG or JPG, up to 5 MB)</label><input type="file" name="image" accept="image/png,image/jpeg"><span class="err" th:errors="*{image}"></span></div></div>
+<div class="alert ok" style="margin-top:18px"><b>Food safety reminder</b><br>Please provide accurate information and ensure the food is safe for collection and consumption.</div>
+<button class="btn btn-green">Publish Donation</button> <button class="btn" name="draft" value="true">Save Draft</button></form></main></div></body></html>

@@ -1,0 +1,10 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('Requests')}"></head><body><div class="shell">
+<aside th:replace="~{fragments/layout :: sidebar('req')}"></aside><main class="main"><div class="top"><div><button class="btn menu-btn">&#9776;</button><h1>Donation Requests</h1><span style="color:var(--muted)">Review recipient details before confirming a collection.</span></div></div>
+<div th:replace="~{fragments/layout :: alerts}"></div>
+<div class="tabs" style="margin-bottom:16px"><a th:href="@{/donor/requests}" th:classappend="${#strings.isEmpty(status)}?'on'">All requests</a><a th:href="@{/donor/requests(status='CLAIMED')}" th:classappend="${status=='CLAIMED'}?'on'">Pending</a><a th:href="@{/donor/requests(status='PICKUP_SCHEDULED')}" th:classappend="${status=='PICKUP_SCHEDULED'}?'on'">Approved</a><a th:href="@{/donor/requests(status='COMPLETED')}" th:classappend="${status=='COMPLETED'}?'on'">Completed</a></div>
+<p th:if="${requests.empty}">No requests found.</p>
+<div class="card req" th:each="r:${requests}"><div><b th:text="${r.organization.organizationName}"></b> <span th:replace="~{fragments/layout :: badge(${r.status.name()})}"></span><br>
+<small style="color:var(--muted)">Requested <b th:text="${r.donation.foodName}"></b> · <span th:text="${r.donation.quantity+' '+r.donation.unit}"></span> · Preferred pickup: <span th:text="${#temporals.format(r.pickupDate,'dd MMM, hh:mm a')}"></span></small></div>
+<div><a class="btn" th:href="@{/donor/donations/{id}(id=${r.donation.id})}">View</a>
+<th:block th:if="${r.status.name()=='CLAIMED'}"><form th:action="@{/donor/requests/{id}/accept(id=${r.id})}" method="post"><button class="btn btn-green">Accept</button></form>
+<form th:action="@{/donor/requests/{id}/reject(id=${r.id})}" method="post"><button class="btn" style="color:#c0392b" data-confirm="Reject this request?">Reject</button></form></th:block></div></div></main></div></body></html>
